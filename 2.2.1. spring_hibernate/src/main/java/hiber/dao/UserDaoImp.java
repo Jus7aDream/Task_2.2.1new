@@ -27,10 +27,10 @@ public class UserDaoImp implements UserDao {
         return query.getResultList();
     }
 
-    @Override
-    public User findOwnerOfCar(String model, int series) {
-        TypedQuery<Car> carTypedQuery = sessionFactory.getCurrentSession();
-        List<Car> findListOfCar = fi
-        return null;
-    }
+//    @Override
+//    public User findOwnerOfCar(String model, int series) {
+//        TypedQuery<Car> carTypedQuery = sessionFactory.getCurrentSession();
+//        List<Car> findListOfCar = fi
+//        return null;
+//    }
 }

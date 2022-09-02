@@ -26,8 +26,8 @@ public class UserServiceImp implements UserService {
         return userDao.listUsers();
     }
 
-    public findOwnerOfCar(String model, int series) {
-        return userDao.findOwnerOfCar(model, series);
-    }
+//    public findOwnerOfCar(String model, int series) {
+//        return userDao.findOwnerOfCar(model, series);
+//    }
 
 }
