@@ -8,5 +8,9 @@ public interface UserService {
     void add(User user);
 
     List<User> listUsers();
-//    User findOwnerOfCar(String model, int series);
+
+    //    User findOwnerOfCar(String model, int series);
+    void deleteAllUsers();
+
+    User findOwner(String model, int series);
 }

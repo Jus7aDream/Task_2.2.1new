@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "cars")
 public class Car {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,6 +28,9 @@ public class Car {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getModel() {
         return model;
