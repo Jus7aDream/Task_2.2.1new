@@ -11,16 +11,16 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class MainApp {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
 
         CarService carService = context.getBean(CarService.class);
 
-        carService.add(new Car("BMW", 3));
-        carService.add(new Car("BMW", 5));
-        carService.add(new Car("BMW", 6));
-        carService.add(new Car("BMW", 7));
+        carService.add(new Car("X", 5));
+        carService.add(new Car("Z", 4));
+        carService.add(new Car("M", 8));
+        carService.add(new Car("I", 7));
 
         UserService userService = context.getBean(UserService.class);
         userService.deleteAllUsers();
@@ -28,7 +28,7 @@ public class MainApp {
         for (Car car : cars) {
             System.out.println("Id = " + car.getId());
             System.out.println("Model = " + car.getModel());
-            System.out.println("series = X" + car.getSeries());
+            System.out.println("Series = " + car.getSeries());
             System.out.println();
         }
 
@@ -43,8 +43,12 @@ public class MainApp {
             System.out.println("First Name = " + user.getFirstName());
             System.out.println("Last Name = " + user.getLastName());
             System.out.println("Email = " + user.getEmail());
+            System.out.println("Car = " + user.getCar());
             System.out.println();
         }
+
+        System.out.println("Owner \"M 8\" is ");
+        System.out.println(userService.findOwner("M", 8));
         context.close();
     }
 }
