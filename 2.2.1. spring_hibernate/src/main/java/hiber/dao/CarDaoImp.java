@@ -1,6 +1,5 @@
 package hiber.dao;
 
-import com.mysql.cj.jdbc.CallableStatement;
 import hiber.model.Car;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

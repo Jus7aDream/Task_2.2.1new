@@ -6,11 +6,7 @@ import java.util.List;
 
 public interface UserService {
     void add(User user);
-
     List<User> listUsers();
-
-    //    User findOwnerOfCar(String model, int series);
-    void deleteAllUsers();
-
-    User findOwner(String model, int series);
+    void deleteUsers();
+    User getOwner(String car_name, String car_series);
 }

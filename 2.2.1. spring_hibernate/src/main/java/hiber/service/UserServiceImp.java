@@ -28,13 +28,13 @@ public class UserServiceImp implements UserService {
 
     @Transactional
     @Override
-    public void deleteAllUsers(){
-        userDao.deleteAllUsers();
+    public void deleteUsers() {
+        userDao.deleteUsers();
     }
 
     @Transactional
     @Override
-    public User findOwner(String model, int series) {
-        return userDao.findOwner(model, series);
+    public User getOwner(String car_model, String car_series) {
+        return userDao.getOwner(car_model, car_series);
     }
 }

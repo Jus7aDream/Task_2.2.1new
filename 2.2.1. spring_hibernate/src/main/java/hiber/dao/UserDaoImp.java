@@ -3,6 +3,7 @@ package hiber.dao;
 import hiber.model.Car;
 import hiber.model.User;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -29,27 +30,26 @@ public class UserDaoImp implements UserDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void deleteAllUsers() {
+    public void deleteUsers() {
         List<User> users = listUsers();
-        for (User user: users) {
+        for (User user : users) {
             sessionFactory.getCurrentSession().delete(user);
         }
     }
 
     @Override
-    public User findOwner(String model, int series) {
-        TypedQuery<Car> findCarQuery =
-                sessionFactory.getCurrentSession().createQuery("from Car where model = model and series = series");
-//                sessionFactory.getCurrentSession().createQuery("from Car ");
+    public User getOwner(String car_model, String car_series) {
+        Query findCarQuery = sessionFactory.getCurrentSession().createQuery("from Car where model = :car_model and series = :car_series")
+                .setParameter("car_model", car_model)
+                .setParameter("car_series", car_series);
         List<Car> findCarList = findCarQuery.getResultList();
         if (!findCarList.isEmpty()) {
             Car findCar = findCarList.get(0);
             List<User> ListUser = listUsers();
-            User findUser = ListUser.stream()
+            return ListUser.stream()
                     .filter(user -> user.getCar().equals(findCar))
                     .findAny()
                     .orElse(null);
-            return findUser;
         }
         return null;
     }
